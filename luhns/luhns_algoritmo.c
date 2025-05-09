@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <math.h>
+#include <stdbool.h>
 
 unsigned int longitud(long long int numero);
 int algoritmo(long long int tarjeta);
@@ -41,7 +42,7 @@ int algoritmo(long long int tarjeta)
 {
     unsigned int numero,digito_derecha = 0;
     unsigned int longitud_num = longitud(tarjeta);
-    char sumar_o_multiplicar = 2;
+    bool sumar_o_multiplicar = true;
     unsigned int ciclos = 0;
     while (ciclos < longitud_num)
     {
@@ -54,10 +55,10 @@ int algoritmo(long long int tarjeta)
             //quita el digito de la derecha
             tarjeta /= 10;
             tarjeta = floor(tarjeta);
-            sumar_o_multiplicar++;
+            sumar_o_multiplicar = false;
             ciclos++;
         }
-        else if (sumar_o_multiplicar % 2 == 1)
+        else
         {
             //obtiene el numero de la derecha
             digito_derecha = tarjeta % 10;
@@ -77,14 +78,14 @@ int algoritmo(long long int tarjeta)
                 //quita el ultimo digito
                 tarjeta/=10;
                 tarjeta = floor(tarjeta);
-                sumar_o_multiplicar--;
+                sumar_o_multiplicar = true;
             }
             else
             {
                 numero+=floor(digito_derecha);
                 tarjeta/=10;
                 tarjeta = floor(tarjeta);
-                sumar_o_multiplicar--;
+                sumar_o_multiplicar = true;
                 ciclos++;
             }
         }

@@ -1,11 +1,10 @@
 #include <stdio.h>
 
 void algoritmo(int lista_desordenada[], int longitud_array);
-int index (int array[],int valor,int longitud);
 
 int main() 
 {
-    int lista[] = {4,1,7,8,6};
+    int lista[] = {4,1,9,8,6};
     int longitud = sizeof(lista)/sizeof(lista[0]);
     algoritmo(lista,longitud);
     return 0;
@@ -13,26 +12,24 @@ int main()
 
 void algoritmo(int lista_desordenada[],int longitud_array)
 {
-    int numero=0,numero_derecha=0,indice;
+    int numero=0,numero_derecha=0;
     //sacando la longitud del array y restando 1
-    int ciclos = longitud_array;
+    int ciclos = longitud_array - 1;
     while (ciclos > 1)
     {
-        for (int x = 0; ciclos > x;)
+        for (int x = 0; x<ciclos;x++ )
         {
-            if (lista_desordenada[x]>lista_desordenada[x+1])
+            if (lista_desordenada[x] > lista_desordenada[x+1])
             {
-                //sacando index
-                indice = index(lista_desordenada,lista_desordenada[x],longitud_array);
                 //obteniendo los valores
-                numero = lista_desordenada[indice];
-                numero_derecha = lista_desordenada[indice+1];
+                numero = lista_desordenada[x];
+                numero_derecha = lista_desordenada[x+1];
                 //cambiando posicion
-                lista_desordenada[indice] = numero_derecha;
-                lista_desordenada[indice+1] = numero;
+                lista_desordenada[x] = numero_derecha;
+                lista_desordenada[x+1] = numero;
             }
-        ciclos--;
         }
+        ciclos--;
     }
     //iterando la lista
     for (int i=0; i < longitud_array; i++)
@@ -41,13 +38,3 @@ void algoritmo(int lista_desordenada[],int longitud_array)
     }
 }
 
-int index (int array[],int valor,int longitud)
-{
-    for (int i = 0; i<longitud; i++)
-    {
-        if (array[i] == valor)
-        {
-            return i;
-        }
-    }
-}
