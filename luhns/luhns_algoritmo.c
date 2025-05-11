@@ -46,7 +46,7 @@ int algoritmo(long long int tarjeta)
     unsigned int ciclos = 0;
     while (ciclos < longitud_num)
     {
-        if (sumar_o_multiplicar % 2 == 0)
+        if (sumar_o_multiplicar == true)
         {
             //obtiene el numero de la derecha
             digito_derecha = tarjeta % 10;
