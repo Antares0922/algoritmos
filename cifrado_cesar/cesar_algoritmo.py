@@ -1,6 +1,6 @@
 import string
 
-def algoritmo(palabra:str,abecedario:list):
+def codificador(palabra:str,abecedario:list):
     codificada = ""
     #recorre la letra de tu palabra
     for letra in palabra:
@@ -11,6 +11,9 @@ def algoritmo(palabra:str,abecedario:list):
                 indice = abecedario.index(i)
                 #recorre 3 espacios mas
                 codificada+=(abecedario[indice+3])
+                break
+            elif letra == ' ':
+                codificada+=' '
                 break
     return codificada
 
@@ -23,8 +26,11 @@ def descodificar(palabra:str,abecedario:list):
             #compara
             if letra == i:
                 indice = abecedario.index(i)
-                #recorre 3 espacios mas
+                #recorre 3 espacios menos
                 descodificada+=(abecedario[indice-3])
+                break
+            elif letra == ' ':
+                descodificada+=' '
                 break
     return descodificada
     
@@ -32,11 +38,11 @@ def descodificar(palabra:str,abecedario:list):
 abecedario = list(string.ascii_lowercase)
 #evitar errores de index
 abecedario.extend(['a','b','c'])
-print(abecedario)
+print(len(abecedario))
 
 palabra = input("escribe una palabra:")
 
-codificada = algoritmo(palabra,abecedario)
+codificada = codificador(palabra,abecedario)
 
 print(f"tu palabra codificada es:{codificada}")
 print(f"tu palabra descodificada es:{descodificar(codificada,abecedario)}")
