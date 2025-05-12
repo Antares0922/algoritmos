@@ -4,14 +4,7 @@ void algoritmo(int lista_desordenada[], int longitud_array);
 
 int main() 
 {
-    int lista[10];
-    for (int indice = 0; indice<10;indice++)
-    {
-        int valor;
-        printf("escribe un numero:\n");
-        scanf("%i",&valor);
-        lista[indice] = valor;
-    }
+    int lista[10] = {99,-10,90,5,0,21,100,-100,93,8};
     int longitud = sizeof(lista)/sizeof(lista[0]);
     algoritmo(lista,longitud);
     return 0;
@@ -22,7 +15,7 @@ void algoritmo(int lista_desordenada[],int longitud_array)
     int numero=0,numero_derecha=0;
     //sacando la longitud del array y restando 1
     int ciclos = longitud_array - 1;
-    while (ciclos > 1)
+    while (ciclos > 0)
     {
         for (int indice = 0; indice<ciclos;indice++ )
         {
