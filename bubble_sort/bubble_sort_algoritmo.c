@@ -1,16 +1,21 @@
 #include <stdio.h>
 
-void algoritmo(int lista_desordenada[], int longitud_array);
+void algoritmo(int lista_desordenada[], int longitud_array,int *pLista);
 
 int main() 
 {
     int lista[10] = {99,-10,90,5,0,21,100,-100,93,8};
     int longitud = sizeof(lista)/sizeof(lista[0]);
-    algoritmo(lista,longitud);
+    int *pLista = lista;
+    algoritmo(lista,longitud,pLista);
+    for (int i = 0; i<10;i++)
+    {
+        printf("%i ",lista[i]);
+    }
     return 0;
 }
 
-void algoritmo(int lista_desordenada[],int longitud_array)
+void algoritmo(int lista_desordenada[],int longitud_array,int *pLista)
 {
     int numero=0,numero_derecha=0;
     //sacando la longitud del array y restando 1
@@ -31,10 +36,10 @@ void algoritmo(int lista_desordenada[],int longitud_array)
         }
         ciclos--;
     }
-    //iterando la lista
+    //modificando lista
     for (int i=0; i < longitud_array; i++)
     {
-        printf("%d,\n",lista_desordenada[i]);
+        *(pLista + i) = lista_desordenada[i];
     }
 }
 

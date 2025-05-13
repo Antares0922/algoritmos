@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-void algoritmo(char palabra[100],int longitud);
+void algoritmo(char palabra[100],int longitud,char *puntero);
 
 int main()
 {
@@ -14,11 +14,14 @@ int main()
     //longitud de la cadena
     int longitud = (int)strlen(palabra);
     printf("la longitud de tu palabra es de %i\n",longitud);
-    algoritmo(palabra,longitud);
+    //puntero a palabra
+    char *pPalabra = palabra;
+    algoritmo(palabra,longitud,pPalabra);
+    printf("tu palabra es %s\n",palabra);
     return 0;
 }
 
-void algoritmo(char palabra[100],int longitud)
+void algoritmo(char palabra[100],int longitud,char *puntero)
 {
     char codificada[100];
     char abc[29] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'a', 'b', 'c'};
@@ -42,5 +45,9 @@ void algoritmo(char palabra[100],int longitud)
     }
     //añadir \0
     codificada[longitud] = '\0';
-    printf("la palabra es %s",codificada);
+    //modificando palabra
+    for (int x = 0; x<longitud+1;x++)
+    {
+        *(puntero + x) = codificada[x];
+    }
 }
